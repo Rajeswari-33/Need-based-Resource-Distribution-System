@@ -1,0 +1,57 @@
+{
+  "version": "7.3",
+  "screens": [
+    {
+      "id": "PREFERENCES",
+      "title": "Notifications",
+      "terminal": true,
+      "success": true,
+      "data": {},
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "TextHeading",
+            "text": "Choose notification channels"
+          },
+          {
+            "type": "TextBody",
+            "text": "Select every optional channel you agree to receive updates on. Unchecked channels are turned off. In-app notifications always stay on."
+          },
+          {
+            "type": "Form",
+            "name": "preferences_form",
+            "children": [
+              {
+                "type": "CheckboxGroup",
+                "label": "Optional notifications",
+                "name": "channels",
+                "required": false,
+                "data-source": [
+                  {
+                    "id": "email",
+                    "title": "Email"
+                  },
+                  {
+                    "id": "whatsapp",
+                    "title": "WhatsApp"
+                  }
+                ]
+              },
+              {
+                "type": "Footer",
+                "label": "Save preferences",
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "channels": "${form.channels}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

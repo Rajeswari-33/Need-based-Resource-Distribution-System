@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --ink: 31 42 68;
+    --ink-light: 49 64 106;
+    --ink-dark: 20 27 46;
+    --paper: 245 244 240;
+    --paper-dim: 237 236 229;
+    --marigold: 232 163 61;
+    --marigold-dark: 201 130 42;
+    --marigold-light: 244 197 116;
+    --banyan: 47 111 94;
+    --banyan-dark: 32 79 66;
+    --banyan-light: 78 146 128;
+    --clay: 181 83 60;
+    --surface: 255 255 255;
+    --surface-raised: 255 255 255;
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+    --ink: 231 237 235;
+    --ink-light: 205 216 213;
+    --ink-dark: 15 23 28;
+    --paper: 224 232 229;
+    --paper-dim: 198 210 206;
+    --surface: 18 28 33;
+    --surface-raised: 29 42 47;
+    --banyan-dark: 113 190 165;
+  }
+
+  :root[data-palette='ocean'] {
+    --marigold: 65 174 196;
+    --marigold-dark: 43 137 160;
+    --marigold-light: 133 211 222;
+    --banyan: 40 122 155;
+    --banyan-dark: 29 91 119;
+    --banyan-light: 92 165 190;
+    --clay: 196 104 75;
+  }
+
+  :root[data-palette='rose'] {
+    --marigold: 222 133 102;
+    --marigold-dark: 185 91 76;
+    --marigold-light: 239 174 147;
+    --banyan: 184 79 103;
+    --banyan-dark: 143 55 77;
+    --banyan-light: 211 119 138;
+    --clay: 161 75 100;
+  }
+
+  :root[data-palette='citrus'] {
+    --marigold: 199 169 57;
+    --marigold-dark: 156 129 37;
+    --marigold-light: 225 207 111;
+    --banyan: 113 139 50;
+    --banyan-dark: 78 101 34;
+    --banyan-light: 157 178 91;
+    --clay: 177 97 55;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  :lang(ta) {
+    font-family: 'Noto Sans Tamil', 'IBM Plex Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid #E8A33D;
+    outline-offset: 2px;
+  }
+}
+
+:root[data-theme='dark'] .bg-ink {
+  background-color: rgb(28 42 48 / var(--tw-bg-opacity, 1)) !important;
+}
+
+:root[data-theme='dark'] .bg-paper {
+  background-color: rgb(18 28 33 / var(--tw-bg-opacity, 1)) !important;
+}
+
+:root[data-theme='dark'] .bg-paper-dim {
+  background-color: rgb(29 42 47 / var(--tw-bg-opacity, 1)) !important;
+}
+
+:root[data-theme='dark'] .bg-white,
+:root[data-theme='dark'] [class~='bg-paper/90'],
+:root[data-theme='dark'] .card,
+:root[data-theme='dark'] .input,
+:root[data-theme='dark'] .eyebrow {
+  background-color: rgb(var(--surface-raised) / var(--tw-bg-opacity, 1)) !important;
+}
+
+:root[data-theme='dark'] .btn-accent,
+:root[data-theme='dark'] .bg-marigold {
+  color: #1c2a30;
+}
+
+.color-picker-swatch {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgb(var(--ink) / 0.25);
+  border-radius: 9999px;
+  background: transparent;
+}
+
+.color-picker-swatch::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-picker-swatch::-webkit-color-swatch {
+  border: 0;
+  border-radius: 9999px;
+}
+
+:root[data-custom-palette='true'] .bg-paper {
+  background-color: color-mix(in srgb, rgb(var(--palette-rgb)) 12%, #f5f4f0) !important;
+}
+
+:root[data-custom-palette='true'] .bg-paper-dim {
+  background-color: color-mix(in srgb, rgb(var(--palette-rgb)) 19%, #edede5) !important;
+}
+
+:root[data-custom-palette='true'] .bg-ink,
+:root[data-custom-palette='true'] .btn-primary {
+  background-color: rgb(var(--palette-rgb) / var(--tw-bg-opacity, 1)) !important;
+  color: rgb(var(--palette-contrast)) !important;
+}
+
+:root[data-custom-palette='true'] .btn-primary:hover {
+  background-color: rgb(var(--palette-dark)) !important;
+}
+
+:root[data-custom-palette='true'] .btn-accent,
+:root[data-custom-palette='true'] .bg-marigold {
+  color: rgb(var(--palette-contrast)) !important;
+}
+
+:root[data-theme='dark'][data-custom-palette='true'] .bg-paper {
+  background-color: color-mix(in srgb, rgb(var(--palette-rgb)) 23%, rgb(18 28 33)) !important;
+}
+
+:root[data-theme='dark'][data-custom-palette='true'] .bg-paper-dim {
+  background-color: color-mix(in srgb, rgb(var(--palette-rgb)) 30%, rgb(29 42 47)) !important;
+}
+
+:root[data-custom-palette='true'] .bg-white,
+:root[data-custom-palette='true'] [class~='bg-paper/90'],
+:root[data-custom-palette='true'] .card,
+:root[data-custom-palette='true'] .input,
+:root[data-custom-palette='true'] .eyebrow {
+  background-color: color-mix(in srgb, rgb(var(--palette-rgb)) 5%, rgb(var(--surface-raised))) !important;
+}
+
+:root[data-theme='dark'][data-custom-palette='true'] .bg-white,
+:root[data-theme='dark'][data-custom-palette='true'] [class~='bg-paper/90'],
+:root[data-theme='dark'][data-custom-palette='true'] .card,
+:root[data-theme='dark'][data-custom-palette='true'] .input,
+:root[data-theme='dark'][data-custom-palette='true'] .eyebrow {
+  background-color: color-mix(in srgb, rgb(var(--palette-rgb)) 13%, rgb(var(--surface-raised))) !important;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-ink-light disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-marigold px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-marigold-dark disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-ink/20 bg-transparent px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-ink/5;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-ink/70 transition-colors hover:text-ink hover:bg-ink/5;
+  }
+  .card {
+    @apply rounded-lg border border-ink/10 bg-white shadow-card;
+  }
+  .input {
+    @apply w-full rounded-md border border-ink/20 bg-white px-3 py-2 text-sm text-ink placeholder:text-ink/40 focus:border-ink focus:outline-none;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-ink/60;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-3 py-1 text-[11px] font-mono uppercase tracking-widest text-ink/60;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide;
+  }
+}

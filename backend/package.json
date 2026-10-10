@@ -1,0 +1,22 @@
+{
+  "name": "setu-donation-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "seed": "node src/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.1",
+    "google-auth-library": "^11.1.0",
+    "mongodb": "^6.9.0",
+    "mongoose": "^9.10.4",
+    "nodemailer": "^10.0.15",
+    "twilio": "^6.1.2"
+  }
+}
